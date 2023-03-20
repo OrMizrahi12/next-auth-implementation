@@ -1,0 +1,100 @@
+.productCard {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .productCard:hover {
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .productCardImage {
+    height: 200px;
+    object-fit: cover;
+    width: 100%;
+  }
+  
+  .productCardBody {
+    padding: 20px;
+  }
+  
+  .productCardTitle {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .productCardPrice {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .productCardDescription {
+    margin-top: 10px;
+  }
+
+  .productCardButton {
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 10px;
+    padding: 10px 20px;
+    transition: background-color 0.2s ease-in-out;
+  }
+  /* disable the button */
+  .productCardButtonDis:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .productCardButton:hover {
+    background-color: #0062cc;
+  }
+
+  .updateItemBtn {
+    margin: 5px;
+    border: none;
+    background-color: darkgray;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .updateItemBtn:hover {
+    background-color: gray;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  
+  }
+
+  .btnAddToWishList {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #FF6961;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #FF6961;
+    background-color: #FFFFFF;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+  
+  .btnAddToWishList::before {
+    content: "\2764";
+  }
+  
+  /* .btnAddToWishList:hover {
+    background-color: #FF6961;
+    color: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  } */
+    

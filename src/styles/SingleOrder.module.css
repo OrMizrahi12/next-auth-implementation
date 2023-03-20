@@ -1,0 +1,63 @@
+.singleOrder {
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 2rem;
+}
+
+.singleOrderHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.singleOrderHeader h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.singleOrderHeader p {
+    font-size: 0.9rem;
+    color: #999;
+}
+
+.singleOrderDetails {
+    background-color: #f7f7f7;
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+.singleOrderItem {
+    margin-bottom: 0.5rem;
+}
+
+.singleOrderItemName {
+    font-weight: bold;
+}
+
+.singleOrderItemQuantity {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.singleOrderItemPrice {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #0070f3;
+}
+
+.backBtn {
+    background-color: #1e90ff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    margin-top: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.backBtn:hover {
+    background-color: #005bff;
+}

@@ -1,0 +1,128 @@
+.button {
+    display: inline-block;
+    background-color: #0366d6;
+    border-radius: 6px;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    margin: 6px;  
+    width: 85%;
+}
+  
+  .button:hover {
+    background-color: #0549b4;
+    color: #ffffff;
+  }
+
+  .form label {
+    display: block;
+    margin-bottom: 6px;
+  }
+  
+  .form input[type="email"],
+  .form input[type="password"] {
+    display: block;
+    
+    width: 80%;
+    margin-bottom: 16px;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+  }
+  
+  .form span {
+    display: block;
+    margin-top: 6px;
+    color: #ff0000;
+  }
+  
+
+   .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 400px;
+  }
+  
+  .submitButton {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .submitButton:hover {
+    background-color: #3e8e41;
+  }
+  
+  .googleContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .googleButton {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff;
+    color: #333;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .googleButton:hover {
+    background-color: #f2f2f2;
+  }
+  
+  .googleIcon {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    background-image: url("https://developers.google.com/identity/images/g-logo.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  
+  .googleText {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .githubIcon {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    background-image: url("https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  

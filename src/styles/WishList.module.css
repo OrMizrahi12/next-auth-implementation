@@ -1,0 +1,153 @@
+/* Wrapper */
+.wishListWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+/* Each item */
+.eachWishListItem {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 300px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.eachWishListItem:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.eachWishListItem img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.eachWishListItem h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.eachWishListItem p {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.eachWishListItem button {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #fff;
+    background-color: #FF6961;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.eachWishListItem button:hover {
+    background-color: #FF5A4A;
+}
+
+@media screen and (max-width: 768px) {
+    .eachWishListItem {
+        width: calc(50% - 20px);
+        height: 250px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .eachWishListItem {
+        width: 100%;
+        height: 200px;
+    }
+}
+
+.wishListTitle {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+    color: #525252;
+}
+
+.wishListTitle:hover {
+    color: #FF6961;
+}
+
+/* Remove */
+.btnRemoveProduct {
+  margin: 5px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  position: relative;
+}
+
+.btnRemoveProduct:before,
+.btnRemoveProduct:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: black;
+  top: 50%;
+  left: 0;
+  transition: all 0.2s ease-in-out;
+}
+
+.btnRemoveProduct:before {
+  transform: rotate(45deg);
+}
+
+.btnRemoveProduct:after {
+  transform: rotate(-45deg);
+}
+
+.btnRemoveProduct:hover:before,
+.btnRemoveProduct:hover:after {
+  background-color: red;
+  transform: scale(1.2);
+}
+
+.btnRemoveProduct:hover {
+  transform: rotate(360deg);
+}
+
+.btnRemoveProduct:hover:before {
+  transform: rotate(-45deg) ;
+}
+
+.btnRemoveProduct:hover:after {
+  transform: rotate(45deg) ;
+}
+/*  */
+
+.wishListEmptyMsg {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+    color: #525252;
+}

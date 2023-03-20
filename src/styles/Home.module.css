@@ -1,0 +1,50 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.container:hover {
+  transform: scale(1.01);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+
+.title {
+  font-size: 4rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #3B3B3B;
+}
+
+.message {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 4rem;
+  color: #707070;
+}
+
+.loggedin {
+  text-align: center;
+}
+
+.logOutbutton {
+  background-color: #34A853;
+  color: #FFFFFF;
+  font-size: 1.6rem;
+  font-weight: bold;
+  padding: 1.2rem 3rem;
+  border: none;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.logOutbutton:hover {
+  background-color: #228B22;
+}
