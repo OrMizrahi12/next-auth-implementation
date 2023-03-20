@@ -1,10 +1,10 @@
-import { getCustomerOrdersByEmail } from "@/logic/Woocommerce/customers";
+import { getAllOrders, getCustomerOrdersByEmail } from "@/logic/Woocommerce/customers";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import styles from "../../styles/orders.module.css";
 import EachOrder from "./EachOrder";
 
-const OrdersComp = () => {
+const OrdersComp = ({orders}) => {
   const [ordersHistory, setOrdersHistory] = useState([]);
   const [loading, setLoading] = useState(false);
   const { data: session } = useSession();
@@ -15,7 +15,9 @@ const OrdersComp = () => {
       setLoading(true);
     }
 
-    const response = await getCustomerOrdersByEmail(session?.user?.email || "");
+    console.log(session?.session?.user?.email)
+    const response = await getAllOrders(session?.session?.user?.email || undefined);
+    console.log(response)
     if (response) {
       setOrdersHistory(response);
       setLoading(false);

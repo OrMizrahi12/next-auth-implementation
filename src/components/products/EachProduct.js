@@ -1,18 +1,22 @@
 import { addToCartUtils, handleUpdateCartUtils } from '@/logic/cartControll/cartControllHelper'
+import { playPopUp } from '@/logic/popupLogic/popupLogic'
 import { getProductQtyInCartById, qtyCartSmallerThanStock } from '@/logic/productsControll/productControllHelper'
-import { addToWiwsList } from '@/logic/wishListLogic/wishListLogic'
+import { getAllIdOfWishList, wishListControll } from '@/logic/wishListLogic/wishListLogic'
 import Link from 'next/link'
 import { useContext, useEffect, useState } from 'react'
 import style from '../../styles/EachProduct.module.css'
 import { AppContext } from '../context/contect'
+import Popup from '../Popup/Popup'
 
 const EachProduct = ({ product }) => {
 
-    const { addToCart, updateCart } = useContext(AppContext)
+    const { addToCart, updateCart ,setShowPopup} = useContext(AppContext)
     const [productCartQty, setProductCartQty] = useState(0)
     const [refreshQty, setRefreshQty] = useState(false)
     const [userCanAddToCart, setUserCanAddToCart] = useState(false)
-
+    const [addToWishList, setAddToWishList] = useState(false)
+    const [wishListIds, setWishListIds] = useState([])
+    const [popupContent, setPopupContent] = useState("")
     const addItemToCart = () => {
 
         const result = addToCartUtils(product, addToCart, updateCart);
@@ -61,6 +65,12 @@ const EachProduct = ({ product }) => {
         }
     }, [refreshQty])
 
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            setWishListIds(getAllIdOfWishList());
+        }
+    }, [addToWishList]);
+
     const btnClassnameControll = () => {
         if (productCartQty >= product.stock_quantity) {
             return style.productCardButtonDis + " " + style.productCardButton;
@@ -71,18 +81,32 @@ const EachProduct = ({ product }) => {
     }
 
     const addToWishListHandler = () => {
-        addToWiwsList(product);
+
+       const isAdded = wishListControll(product);
+       if(isAdded){
+        setPopupContent("Added to wish list");
+       }
+       else{
+        setPopupContent("Removed from wish list");
+       }
+        
+        playPopUp(setShowPopup,500);
+        setAddToWishList(prev => !prev);
+        
     }
 
     return (
         <div className={style.productCard}>
-            <button onClick={()=>addToWishListHandler()} className={style.btnAddToWishList}></button>
+            <button
+                onClick={() => addToWishListHandler()}
+                className={!wishListIds.includes(product.id) ? style.btnAddToWishList : style.btnAddedToWishList}>
+            </button>
             <Link href={`/product/${product?.slug ?? ''}`}>
                 <img className={style.productCardImage} src={product.images[0]?.src || ''} alt={product.name} />
             </Link>
-            
+
             <div className={style.productCardBody}>
-                
+
                 <h2 className={style.productCardTitle}>{product.name}</h2>
                 <span className={style.productCardPrice}>{product.price}</span>
                 <p className={style.productCardDescription}>{product.image}</p>
@@ -106,7 +130,9 @@ const EachProduct = ({ product }) => {
                     -
                 </button>
                 <p id='cantAddToCartMsg' ></p>
+                <Popup content={popupContent} />
             </div>
+            
         </div>
     )
 }

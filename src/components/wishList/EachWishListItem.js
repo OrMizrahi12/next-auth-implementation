@@ -4,7 +4,7 @@ import { addToCartUtils } from '@/logic/cartControll/cartControllHelper'
 import { useContext } from 'react';
 import { AppContext } from '../context/contect';
 
-const EachWishListItem = ({ wishListItem }) => {
+const EachWishListItem = ({ wishListItem, setUserInteractionCallbac }) => {
 
   const { addToCart, updateCart } = useContext(AppContext)
 
@@ -15,6 +15,12 @@ const EachWishListItem = ({ wishListItem }) => {
     if (result === true) {
       removeFromWishList(wishListItem?.id);
     }
+    setUserInteractionCallbac(prev => !prev);
+  }
+
+  const removeFromWishListHandler = () => {
+    removeFromWishList(wishListItem?.id);
+    setUserInteractionCallbac(prev => !prev);
   }
 
   return (
@@ -28,7 +34,7 @@ const EachWishListItem = ({ wishListItem }) => {
         Move to cart
       </button>
       <br />
-      <button onClick={() => removeFromWishList(wishListItem?.id)} >Romve</button>
+      <button onClick={() => removeFromWishListHandler()} >Romve</button>
       <p style={{ color: 'red' }}>{wishListItem.stock_quantity < 1 ? "out of stock" : ""}</p>
     </div>
   )

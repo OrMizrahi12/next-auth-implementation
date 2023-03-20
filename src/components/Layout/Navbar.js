@@ -1,18 +1,24 @@
+import { getNavbarForLoggedInUser, getNavbarForLoggedOutUser } from '@/logic/LayoutLogic/LayoutLogic';
+import { signOut, useSession } from 'next-auth/react';
 import Link from 'next/link'
 import { useContext, useState } from 'react';
 import styles from '../../styles/Navbar.module.css'
 import { AppContext } from '../context/contect';
 
 const Navbar = ({ headerData }) => {
-   
-    const { getTotalPrice, getTotalQty } = useContext(AppContext);    
+
+    const { getTotalPrice, getTotalQty } = useContext(AppContext);
     const menuItems = headerData?.headerMenuItems || [];
-    const totalPrice = getTotalPrice(); 
+    const totalPrice = getTotalPrice();
     const totalQuantity = getTotalQty();
     const [isResponsive, setIsResponsive] = useState(false);
+    const { data: session } = useSession();
 
     const toggleResponsive = () => {
         setIsResponsive(!isResponsive);
+    }
+    const handleLogout = async () => {
+        await signOut()
     }
 
     return (
@@ -21,16 +27,25 @@ const Navbar = ({ headerData }) => {
                 Home
             </Link>
             {
-                menuItems.map(menuItem => <Link
-                    href={`/${menuItem.pageSlug}`} key={menuItem.title}  >
+                session ? getNavbarForLoggedInUser(menuItems).map(menuItem => <Link
+                    href={`/${menuItem.pageSlug}`}
+                    key={menuItem.title} >
                     {menuItem.title}
-                </Link>)
+                </Link>
+                ) :
+                    getNavbarForLoggedOutUser(menuItems).map(menuItem => <Link
+                        href={`/${menuItem.pageSlug}`}
+                        key={menuItem.title} >{
+                            menuItem.title}
+                    </Link>
+                    )
             }
+            {session && <button className={styles.logoutBtn} onClick={() => handleLogout()}>Log out</button>} 
             <a className={styles.icon} onClick={toggleResponsive}>
                 <i className="fa fa-bars">{isResponsive ? '-' : '+'}</i>
             </a>
-            <Link href='/checkout' style={{float:"right"}}>Total price: {totalPrice}</Link>
-            <Link href='/checkout' style={{float:"right"}}>Total quantity: {totalQuantity}</Link>
+            <Link href='/checkout' style={{ float: "right" }}>Total price: {totalPrice}</Link>
+            <Link href='/checkout' style={{ float: "right" }}>Total quantity: {totalQuantity}</Link>
         </div>
     );
 }

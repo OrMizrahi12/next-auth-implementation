@@ -5,6 +5,8 @@ export const AppContext = createContext()
 export const AppProvider = ({ children }) => {
 
     const [cart, setCart] = useState([]);
+    const [showPopup, setShowPopup] = useState(false);
+
 
 
     const addToCart = (product) => {
@@ -62,14 +64,6 @@ export const AppProvider = ({ children }) => {
     }
 
 
-    // useEffect(() => {
-    //     if (typeof window !== 'undefined') {
-    //         const cartFromLocalStorage = JSON?.parse(localStorage.getItem('cart')) || []
-    //         setCart(cartFromLocalStorage);
-    //     }
-    // }, [])
-
-
 
     const removeFromCart = (productId) => {
         const newCart = cart.filter((item) => item.id !== productId);
@@ -85,7 +79,9 @@ export const AppProvider = ({ children }) => {
             setCart,
             getTotalPrice,
             getTotalQty,
-            updateCart
+            updateCart,
+            showPopup, 
+            setShowPopup
         }}>
             {children}
         </AppContext.Provider>
