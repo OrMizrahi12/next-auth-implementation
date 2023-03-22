@@ -2,10 +2,11 @@ import EachProduct from "./EachProduct"
 import style from '../../styles/Products.module.css'
 import { useContext, useEffect } from "react"
 import { AppContext } from "../context/contect"
+import FiltersComponent from "../filters"
 
 const Products = ({ products = [] }) => {
 
-    const { setCart } = useContext(AppContext);
+    const { setCart ,productsShopData, setProductsShopData, productsShopDataUpdated, setProductsShopDataUpdated} = useContext(AppContext);
     
     useEffect(() => {
         if (typeof window !== "undefined") {
@@ -20,13 +21,20 @@ const Products = ({ products = [] }) => {
         }
     }, [setCart])
     
+    useEffect(() => {
+        if(typeof window !== "undefined"){
+            setProductsShopData(products || []);
+        }
+    },[productsShopData, productsShopDataUpdated]);
+    
     return (
         <>
-        { products && 
+        { productsShopData && 
             <div className={style.container}>
+                <FiltersComponent />
                 <div className={style.productsContainer}>
                     {
-                        products.map(product => <EachProduct key={product.id} product={product} />)
+                        productsShopData.map(product => <EachProduct key={product.id} product={product} />)
                     }
                 </div>
             </div>
@@ -37,43 +45,3 @@ const Products = ({ products = [] }) => {
 
 export default Products
 
-// import EachProduct from "./EachProduct"
-// import style from '../../styles/Products.module.css'
-// import { useContext, useEffect } from "react"
-// import { AppContext } from "../context/contect"
-
-// const Products = ({ products = [] }) => {
-
-//     const { setCart } = useContext(AppContext);
-//     if(!products){
-//         return; 
-//     }
-    
-//     useEffect(() => {
-//         if (typeof window !== "undefined") {
-//             const storedCart = localStorage.getItem('cart')
-//             if (storedCart !== null && storedCart !== undefined) {
-//                 try {
-//                     setCart(JSON.parse(storedCart))
-//                 } catch (error) {
-//                     console.error('Error parsing stored cart:', error)
-//                 }
-//             }
-//         }
-//     }, [])
-    
-
-//     return (
-//         <div className={style.container}>
-
-//             <div className={style.productsContainer}>
-//                 {
-//                     products.map(product => <EachProduct key={product.id} product={product} />)
-//                 }
-//             </div>
-//         </div>
-
-//     )
-// }
-
-// export default Products

@@ -1,15 +1,20 @@
 import { addToCartUtils, handleUpdateCartUtils } from '@/logic/cartControll/cartControllHelper'
+import { playPopUp } from '@/logic/popupLogic/popupLogic'
 import { getProductQtyInCartById } from '@/logic/productsControll/productControllHelper'
+import { getAllIdOfWishList, wishListControll } from '@/logic/wishListLogic/wishListLogic'
 import { useContext, useEffect, useState } from 'react'
 import Style from '../../styles/SingleProduct.module.css'
 import { AppContext } from '../context/contect'
 
 const SingleProduct = ({ product }) => {
 
-    const { addToCart, updateCart } = useContext(AppContext)
+
+    const { addToCart, updateCart ,setShowPopup} = useContext(AppContext)
     const [productCartQty, setProductCartQty] = useState(0);
     const [refreshQty, setRefreshQty] = useState(false);
-
+    const [addToWishList, setAddToWishList] = useState(false)
+    const [wishListIds, setWishListIds] = useState([])
+    const [popupContent, setPopupContent] = useState("")
     const handleCartUpdating = (increment) => {
 
         const resut = handleUpdateCartUtils(increment, product, addToCart, updateCart);
@@ -49,10 +54,33 @@ const SingleProduct = ({ product }) => {
         document.getElementById('waringMsgId').style.color = 'red';
     }
 
+    const addToWishListHandler = () => {
+
+        const isAdded = wishListControll(product);
+        if (isAdded) {
+            setPopupContent("Added to wish list");
+        }
+        else {
+            setPopupContent("Removed from wish list");
+        }
+        playPopUp(setShowPopup, 500);
+        setAddToWishList(prev => !prev);
+    }
+
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            setWishListIds(getAllIdOfWishList());
+        }
+    }, [addToWishList]);
+
 
 
     return (
         <div className={Style.productCard}>
+            <button
+                onClick={() => addToWishListHandler()}
+                className={!wishListIds.includes(product.id) ? Style.btnAddToWishList : Style.btnAddedToWishList}>
+            </button>
             <img className={Style.productCardImage} src={product.images[0]?.src || ''} alt={product.name} />
             <div className={Style.productCardContent}>
                 <h3>{product.name}</h3>

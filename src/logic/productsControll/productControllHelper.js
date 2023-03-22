@@ -63,7 +63,7 @@ export const getProductQtyInCartById = (productId) => {
 
 export const getProductsData = async (query) => {
     const { page = 1 } = query;
-    const perPage = 5;
+    const perPage = 50;
     const response = await api.get(`products?per_page=${perPage}&page=${page}`);
     const products = response.data;
     const totalProducts = response.headers["x-wp-total"];

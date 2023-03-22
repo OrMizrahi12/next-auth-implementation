@@ -91,10 +91,7 @@
   .btnAddToWishList::before {
     content: "\2764";
   }
-  
-  /* .btnAddToWishList:hover {
-    color: #be0000;
-  } */
+
   
   .btnAddedToWishList {
     display: inline-flex;
@@ -114,6 +111,3 @@
   .btnAddedToWishList::before {
     content: "\2764";
   }
-  /* .btnAddedToWishList:hover {
-    color: #6e6e6e;
-  } */

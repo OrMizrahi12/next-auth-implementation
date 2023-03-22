@@ -1,0 +1,40 @@
+/* FilterByPrice styles */
+.filterByPrice {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+}
+
+.filterByPrice label {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.filterByPrice input[type="radio"] {
+    margin-right: 10px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.filterByPrice input[type="radio"]:hover {
+    border-color: #333;
+}
+
+.filterByPrice input[type="radio"]:checked {
+    background-color: #333;
+}
+
+.filterByPriceWrapper{
+    border: solid 1px #ccc;
+    border-radius: 10px;
+    margin: 10px;
+    width: 200px;
+}

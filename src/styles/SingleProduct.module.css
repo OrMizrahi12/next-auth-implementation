@@ -104,3 +104,43 @@
   .productCardButton:hover {
     background-color: #0069d9;
   }
+
+    .btnAddToWishList {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    font-size: 26px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #727272;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 4px;
+    float: right;
+  }
+  
+  .btnAddToWishList::before {
+    content: "\2764";
+  }
+
+  
+  .btnAddedToWishList {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    font-size: 26px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #ff0000;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 4px;
+    float: right;
+  }
+  .btnAddedToWishList::before {
+    content: "\2764";
+  }

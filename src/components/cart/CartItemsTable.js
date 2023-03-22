@@ -29,6 +29,7 @@ const CartItemsTable = () => {
                                 <div className={styles["product-container"]}>
                                     <img src={item?.images[0]?.src || ''} alt={item.name} className={styles["product-image"]} />
                                     <div>
+                                    
                                         <p>{item.name}</p>
                                         <p>${Number(item.price).toFixed(2)}</p>
                                     </div>

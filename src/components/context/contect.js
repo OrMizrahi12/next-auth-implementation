@@ -6,7 +6,9 @@ export const AppProvider = ({ children }) => {
 
     const [cart, setCart] = useState([]);
     const [showPopup, setShowPopup] = useState(false);
-
+    const [productsShopData, setProductsShopData] = useState([]);
+    const [productsShopDataUpdated, setProductsShopDataUpdated] = useState(false);
+    
 
 
     const addToCart = (product) => {
@@ -40,8 +42,8 @@ export const AppProvider = ({ children }) => {
         setCart((prevCart) => {
 
             const indexToRemove = prevCart.findIndex((item) => item.id === productId);
-           
-             if (indexToRemove !== -1) {
+
+            if (indexToRemove !== -1) {
                 const newCart = [...prevCart];
                 newCart.splice(indexToRemove, 1);
                 localStorage.setItem("cart", JSON.stringify(newCart));
@@ -53,22 +55,21 @@ export const AppProvider = ({ children }) => {
 
     const incrementProductFromCart = (productId) => {
         const product = cart.find(item => item?.id === productId);
-        console.log("this",product)
+        console.log("this", product)
         if (!product) {
             return;
         }
         else {
             addToCart(product);
         }
-        
     }
 
 
 
     const removeFromCart = (productId) => {
         const newCart = cart.filter((item) => item.id !== productId);
-        setCart(newCart); 
-        localStorage.setItem('cart', newCart); 
+        setCart(newCart);
+        localStorage.setItem('cart', newCart);
     }
 
     return (
@@ -80,8 +81,13 @@ export const AppProvider = ({ children }) => {
             getTotalPrice,
             getTotalQty,
             updateCart,
-            showPopup, 
-            setShowPopup
+            showPopup,
+            setShowPopup,
+            productsShopData,
+            setProductsShopData,
+            productsShopDataUpdated,
+            setProductsShopDataUpdated
+            
         }}>
             {children}
         </AppContext.Provider>
