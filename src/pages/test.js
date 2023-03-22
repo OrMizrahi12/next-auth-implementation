@@ -1,13 +1,15 @@
-import { AppContext } from "@/components/context/contect"
-import Popup from "@/components/Popup/Popup"
-import { playPopUp } from "@/logic/popupLogic/popupLogic"
-import { useContext } from "react"
+import { getAllcategoriesInWooCommerce, getProductsInCategoryBySlug } from "@/logic/categoriesLogic/categoriesLogic"
+import { api } from "@/logic/Woocommerce/WoocommerceAPI"
+
 
 export default function Test() {
-    
-    const {setShowPopup} = useContext(AppContext)
+
+    const getProductsByCategories = async () => {
+        const result = await getAllcategoriesInWooCommerce();
+        console.log(result)
+    }
+
     return <div>
-       <Popup  />
-        <button value={"Get"} onClick={() => playPopUp(setShowPopup,1000)} />
+        <button value={"Get"} onClick={() => getProductsByCategories()} />
     </div>
 }

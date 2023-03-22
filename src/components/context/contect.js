@@ -8,9 +8,9 @@ export const AppProvider = ({ children }) => {
     const [showPopup, setShowPopup] = useState(false);
     const [productsShopData, setProductsShopData] = useState([]);
     const [productsShopDataUpdated, setProductsShopDataUpdated] = useState(false);
+    const [categoriesArray, setCategoriesArray] = useState([]);
     
-
-
+    
     const addToCart = (product) => {
         const updatedCart = [...cart, product]
         localStorage.setItem('cart', JSON.stringify(updatedCart))
@@ -86,7 +86,9 @@ export const AppProvider = ({ children }) => {
             productsShopData,
             setProductsShopData,
             productsShopDataUpdated,
-            setProductsShopDataUpdated
+            setProductsShopDataUpdated,
+            categoriesArray, 
+            setCategoriesArray
             
         }}>
             {children}

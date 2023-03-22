@@ -5,13 +5,14 @@ import styles from '../styles/login.module.css'
 import LoginForm from "@/components/userAuth/LoginForm";
 import Layout from "@/components/Layout/Layout";
 import { getHeaderFooter } from "@/utils/layout/headerFooterProvider";
+import { getAllcategoriesInWooCommerce } from "@/logic/categoriesLogic/categoriesLogic";
 const jwt = require('jsonwebtoken');
 
 
-export default function LoginPage({ headerFooterData }) {
+export default function LoginPage({ headerFooterData, categories }) {
 
   return (
-    <Layout headerFooterData={headerFooterData}>
+    <Layout headerFooterData={headerFooterData} categories={categories}>
       <LoginForm />
     </Layout>
 
@@ -20,10 +21,13 @@ export default function LoginPage({ headerFooterData }) {
 
 export async function getServerSideProps() {
   const headerFooterData = await getHeaderFooter();
+  const {data: categories} = await getAllcategoriesInWooCommerce();
+
 
   return {
     props: {
-      headerFooterData: headerFooterData.data
+      headerFooterData: headerFooterData.data,
+      categories: categories || []
     },
   };
 }

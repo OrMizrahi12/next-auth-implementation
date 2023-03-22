@@ -1,14 +1,13 @@
-import styles from '../styles/login.module.css'
-import { useForm } from "react-hook-form";
-import { signIn } from 'next-auth/react';
+
 import RegisterForm from '@/components/userAuth/RegisterForm';
 import Layout from '@/components/Layout/Layout';
 import { getHeaderFooter } from '@/utils/layout/headerFooterProvider';
+import { getAllcategoriesInWooCommerce } from '@/logic/categoriesLogic/categoriesLogic';
 
 
-export default function RegisterPage({ headerFooterData }) {
+export default function RegisterPage({ headerFooterData , categories}) {
     return (
-        <Layout headerFooterData={headerFooterData}>
+        <Layout headerFooterData={headerFooterData} categories={categories}>
             <RegisterForm />
         </Layout>
 
@@ -17,10 +16,13 @@ export default function RegisterPage({ headerFooterData }) {
 
 export async function getServerSideProps() {
     const headerFooterData = await getHeaderFooter();
+    const {data: categories} = await getAllcategoriesInWooCommerce();
 
     return {
         props: {
-            headerFooterData: headerFooterData.data
+            headerFooterData: headerFooterData.data,
+            categories: categories || []
+
         },
     };
 }

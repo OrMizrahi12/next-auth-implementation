@@ -1,0 +1,40 @@
+/* FilterByStock styles */
+.filterByStock {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+}
+
+.filterByStock label {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.filterByStock input[type="radio"] {
+    margin-right: 10px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.filterByStock input[type="radio"]:hover {
+    border-color: #333;
+}
+
+.filterByStock input[type="radio"]:checked {
+    background-color: #333;
+}
+
+.filterByStockWrapper{
+    border: solid 1px #ccc;
+    border-radius: 10px;
+    margin: 10px;
+    width: 200px;
+}

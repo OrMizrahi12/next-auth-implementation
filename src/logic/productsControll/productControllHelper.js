@@ -52,14 +52,6 @@ export const getProductQtyInCartById = (productId) => {
     }
 }
 
-// get request wuth woocoomerce api to get all products 
-// const { page = 1 } = query;
-// const perPage = 5;
-// const response = await api.get(`products?per_page=${perPage}&page=${page}`);
-// const products = response.data;
-// const headerFooterData = await getHeaderFooter();
-// const totalProducts = response.headers["x-wp-total"];
-// const totalPages = Math.ceil(totalProducts / perPage);
 
 export const getProductsData = async (query) => {
     const { page = 1 } = query;

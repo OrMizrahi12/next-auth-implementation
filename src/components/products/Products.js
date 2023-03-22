@@ -4,10 +4,19 @@ import { useContext, useEffect } from "react"
 import { AppContext } from "../context/contect"
 import FiltersComponent from "../filters"
 
+
 const Products = ({ products = [] }) => {
 
-    const { setCart ,productsShopData, setProductsShopData, productsShopDataUpdated, setProductsShopDataUpdated} = useContext(AppContext);
-    
+    console.log('This is from c:', products)
+    const {
+        setCart,
+        productsShopData,
+        setProductsShopData,
+        productsShopDataUpdated,
+        setProductsShopDataUpdated,
+        setCategoriesArray
+    } = useContext(AppContext);
+
     useEffect(() => {
         if (typeof window !== "undefined") {
             const storedCart = localStorage.getItem('cart')
@@ -20,25 +29,29 @@ const Products = ({ products = [] }) => {
             }
         }
     }, [setCart])
-    
+
     useEffect(() => {
-        if(typeof window !== "undefined"){
-            setProductsShopData(products || []);
+        if (typeof window !== "undefined") {
+            setProductsShopData(productsShopData.length > 0 ? productsShopData : products || []);
         }
-    },[productsShopData, productsShopDataUpdated]);
-    
+    }, [productsShopDataUpdated]);
+
+    useEffect(() => { }, [])
+
+
+
     return (
         <>
-        { productsShopData && 
-            <div className={style.container}>
-                <FiltersComponent />
-                <div className={style.productsContainer}>
-                    {
-                        productsShopData.map(product => <EachProduct key={product.id} product={product} />)
-                    }
+            {productsShopData &&
+                <div className={style.container}>
+                    <FiltersComponent products={products} />
+                    <div className={style.productsContainer}>
+                        {
+                            productsShopData.map(product => <EachProduct key={product.id} product={product} />)
+                        }
+                    </div>
                 </div>
-            </div>
-        }
+            }
         </>
     )
 }

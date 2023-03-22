@@ -1,10 +1,17 @@
+import FilterByCategories from "./FilterByCategories";
 import FilterByPrice from "./FilterByPrice";
-
-const FiltersComponent = () => {
+import FilterByStock from "./FilterByStock";
+import style from '../../styles/FiltersGeneral.module.css'
+const FiltersComponent = ({ products }) => {
 
     return (
         <div>
-            <FilterByPrice />
+
+            <div className={style.filtersWrapper}>
+                <FilterByPrice />
+                <FilterByStock products={products} />
+            </div>
+            <FilterByCategories products={products} />
         </div>
     );
 }
