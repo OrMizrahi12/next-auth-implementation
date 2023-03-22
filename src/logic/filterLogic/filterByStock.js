@@ -9,4 +9,6 @@ export const orderByStockMaxToMin = (products) => {
 
 export const orderByStockMinToMax = (products) => {
     return products.sort((a, b) => a?.stock_quantity - b?.stock_quantity);
+
+    
 }
